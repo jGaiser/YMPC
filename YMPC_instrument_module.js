@@ -14,6 +14,14 @@ YMPC.Instrument = (function(){
       that.padHash[pad] = time;     
     };
 
+    this.pressPad = function(pad){
+      YMPC.Audio.play(that.buffer, that.padHash[pad]);
+    };
+
+    this.releasePad = function(pad){
+      YMPC.Audio.stop(that.buffer, that.padHash[pad]);
+    };
+
     this.playSample = function(pad){
       YMPC.Audio.play(that.buffer, that.padHash[pad]) 
     };
@@ -34,11 +42,19 @@ YMPC.Instrument = (function(){
     }
   };
 
+  var soundboardDump = function(){
+    return soundBoardHash;
+  };
+
   return {
 //--createSoundBoard(name[string], buffer[from audio_module])
     createSoundBoard: createSoundBoard,
 //--getSoundBoard(name[string])      
-    getSoundBoard: getSoundBoard
+    getSoundBoard: getSoundBoard,
+
+    soundboardDump: soundboardDump
   }
+
+
 
 })();

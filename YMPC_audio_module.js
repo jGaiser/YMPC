@@ -46,12 +46,14 @@ YMPC.Audio = (function(){
     source.buffer = audioBuffers[buffer];
     source.connect(audioContext.destination);
     source.start(0, time);
+    console.log('play!');
   };
      
 //Stop audio clip
   function stop(buffer, time){
     activeBuffers[buffer][time].stop();
     delete activeBuffers[buffer][time];
+    console.log('stop!');
   };
 
   return {
@@ -62,6 +64,6 @@ YMPC.Audio = (function(){
 //--play(bufferTitle, startTime)
     play: play,
 //--stop(bufferTitle, sampleStartTime)
-    stop: stop
+    stop: stop,
   };
 })();
